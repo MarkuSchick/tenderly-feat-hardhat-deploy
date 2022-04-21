@@ -5,7 +5,7 @@ import '@nomiclabs/hardhat-ethers';
 import 'hardhat-gas-reporter';
 import '@typechain/hardhat';
 import 'solidity-coverage';
-import 'hardhat-deploy-tenderly';
+import '@tenderly/hardhat-tenderly';
 import {node_url, accounts, addForkConfiguration} from './utils/network';
 
 const config: HardhatUserConfig = {
@@ -57,6 +57,11 @@ const config: HardhatUserConfig = {
     goerli: {
       url: node_url('goerli'),
       accounts: accounts('goerli'),
+    },
+    tenderly: {
+      url: node_url('tenderly'),
+      accounts: accounts('goerli'),
+      chainId: 1, // have to add this here, since deployment fails with `Error in hardhat-tenderly: Couldn't identify network. Please provide a chainID in the network config objec`otherwise
     },
   }),
   paths: {
