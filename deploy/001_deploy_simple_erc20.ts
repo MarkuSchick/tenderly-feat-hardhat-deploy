@@ -17,15 +17,15 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   if (hre.network.name == 'tenderly') {
     await hre.tenderly.persistArtifacts({
-      name: 'SimpleERC20',
+      name: 'ERC20',
       address: token.address,
     });
 
     await hre.tenderly.verify({
-      name: 'SimpleERC20',
+      name: 'ERC20',
       address: token.address,
     });
   }
 };
 export default func;
-func.tags = ['SimpleERC20'];
+func.tags = ['ERC20'];
